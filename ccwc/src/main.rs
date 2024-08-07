@@ -5,6 +5,8 @@ use std::{
     io::{BufRead, BufReader, Read},
 };
 
+mod test;
+
 /// Count the file
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
