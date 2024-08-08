@@ -42,33 +42,33 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn process_file(args: &Args, path: &str) -> Result<()> {
-    let path = path.split("/").last().unwrap();
+fn process_file(args: &Args, file: &str) -> Result<()> {
+    let path = file.split("/").last().unwrap();
 
     if args.count {
-        let byte_count = byte_count(path)?;
+        let byte_count = byte_count(file)?;
         println!("{:?} {}", byte_count, path);
     }
 
     if args.line {
-        let line_count = line_count(path)?;
+        let line_count = line_count(file)?;
         println!("{:?} {}", line_count, path);
     }
 
     if args.word {
-        let word_count = word_count(path)?;
+        let word_count = word_count(file)?;
         println!("{:?} {}", word_count, path);
     }
 
     if args.multibyte {
-        let char_count = char_count(path)?;
+        let char_count = char_count(file)?;
         println!("{:?} {}", char_count, path);
     }
 
     if !args.count && !args.line && !args.word && !args.multibyte {
-        let byte_count = byte_count(path)?;
-        let word_count = word_count(path)?;
-        let line_count = line_count(path)?;
+        let byte_count = byte_count(file)?;
+        let word_count = word_count(file)?;
+        let line_count = line_count(file)?;
 
         println!("{line_count} {word_count} {byte_count} {path}");
     }
@@ -89,7 +89,7 @@ fn process_stdin(args: &Args) -> Result<()> {
 
     if args.line {
         let content = String::from_utf8(buf.clone())?;
-        let line_count = content.split("\n").count();
+        let line_count = content.split("\n").count() - 1;
         println!("{:?} ", line_count);
     }
 

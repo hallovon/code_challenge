@@ -1,3 +1,3 @@
 [workspace]
-members = ["ccwc", "huffman-compression"]
+members = ["ccwc", "huffman-compression", "cut"]
 resolver = "1"
